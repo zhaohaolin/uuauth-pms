@@ -9,8 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.uuauth.api.domain.ApiConfig;
-import com.uuauth.api.domain.IApiConfig;
+import org.apache.commons.lang.StringUtils;
+
 import com.uuauth.api.service.UUAuthAPIService;
 
 /**
@@ -26,17 +26,33 @@ public class GetLoginTokenServlet extends HttpServlet {
 	private static final long	serialVersionUID	= 4045479596880248650L;
 	private UUAuthAPIService	apiService			= UUAuthAPIService
 															.getInstance();
-	private IApiConfig			apiConfig			= new ApiConfig();
+	private static final String	APPTOKEN			= "app.token";
+	private static final String	APPPASSWORD			= "app.password";
+	private static final String	APIURL				= "app.api.url";
+	private static final String	APPSUFFIX			= "app.suffix";
 	
 	public void init(ServletConfig config) throws ServletException {
-		super.init(config);
-		// 1.读到配置参数
-		// 3.把参数配置到服务类中，并初始化服务类
-		apiService.setToken(apiConfig.getToken());
-		apiService.setPassword(apiConfig.getPassword());
-		apiService.setApiUrl(apiConfig.getApiUrl());
-		apiService.setSuffix(apiConfig.getSuffix());
+		String token = config.getInitParameter(APPTOKEN);
+		if (StringUtils.isNotEmpty(token)) {
+			apiService.setToken(token);
+		}
+		
+		String password = config.getInitParameter(APPPASSWORD);
+		if (StringUtils.isNotEmpty(password)) {
+			apiService.setPassword(password);
+		}
+		
+		String apiUrl = config.getInitParameter(APIURL);
+		if (StringUtils.isNotEmpty(apiUrl)) {
+			apiService.setApiUrl(apiUrl);
+		}
+		
+		String suffix = config.getInitParameter(APPSUFFIX);
+		if (StringUtils.isNotEmpty(suffix)) {
+			apiService.setSuffix(suffix);
+		}
 		apiService.init();
+		super.init(config);
 	}
 	
 	public void doGet(HttpServletRequest req, HttpServletResponse resp)

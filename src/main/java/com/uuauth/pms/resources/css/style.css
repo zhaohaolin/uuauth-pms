@@ -1,0 +1,240 @@
+BODY {
+	BACKGROUND-COLOR: #93bde6;
+	font-size: 12px;
+}
+
+DIV.version {
+	FONT-WEIGHT: bold;
+	FONT-SIZE: 100%;
+	MARGIN-BOTTOM: 8px
+}
+
+H1 {
+	FONT-WEIGHT: bold;
+	FONT-SIZE: 100%
+}
+
+OPTION {
+	PADDING-RIGHT: 24px;
+	PADDING-LEFT: 4px;
+	PADDING-BOTTOM: 2px;
+	PADDING-TOP: 2px
+}
+
+.tree {
+	BORDER-COLLAPSE: collapse;
+	background-color:white;
+}
+
+.tree th {
+	border: black 1px solid;
+	text-align: left;
+	padding-left: 5px;
+	word-break: break-all;
+	text-align: center;
+}
+
+.tree td {
+	padding-left: 5px;
+	height: 16px;
+}
+
+.tree td img {
+	border: none;
+	vertical-align: bottom;
+}
+
+.tree td a {
+	vertical-align: bottom;	
+}
+
+.data {
+	BORDER-COLLAPSE: collapse;
+	float: left;
+}
+
+.data th {
+	border: black 1px solid;
+	text-align: left;
+	padding: 2px 0 2px 5px;
+	word-break: break-all;
+	text-align: center;
+}
+
+.data td {
+	border: black 1px solid;
+	background: #fff;
+	padding: 2px 0 2px 5px;
+	padding-left: 5px;
+	height: 20px;
+}
+
+.data td input,.data td textarea {
+	width: 500px;
+}
+
+.inputTd {
+	padding: 0 0 0 5px;
+	font-size: 14px;
+}
+
+.core-property {
+	padding-left: 5px;
+	font-size: 14px;
+}
+
+.data .valignTop {
+	vertical-align: top;
+	padding-top: 6px;
+}
+
+TD.null {
+	BACKGROUND: yellow
+}
+
+TD.available {
+	COLOR: black
+}
+
+TD.active {
+	COLOR: red
+}
+
+TD.offline {
+	COLOR: blue
+}
+
+UL {
+	FONT-SIZE: 90%;
+	PADDING: 0px;
+	MARGIN: 0px;
+	LIST-STYLE-TYPE: none;
+}
+
+LI {
+	border-left: black 1px solid;
+	border-top: black 1px solid;
+	border-right: black 1px solid;
+	float: left;
+	MARGIN: 0px 4px 0px 0px;
+}
+
+li a {
+	display: block;
+	padding: 3px 5px 3px 5px;
+}
+
+LI.active {
+	BACKGROUND: #bddeff;
+}
+
+LI.inactive {
+	BACKGROUND: #eeeeee;
+}
+
+LI.disabled {
+	PADDING-RIGHT: 4px;
+	PADDING-LEFT: 4px;
+	BACKGROUND: #dddddd;
+	PADDING-BOTTOM: 0px;
+	COLOR: #999999;
+	PADDING-TOP: 0px
+}
+
+A.quiet {
+	COLOR: black;
+	TEXT-DECORATION: none;
+}
+
+A.quiet:hover {
+	BACKGROUND: white
+}
+
+A:link {
+	COLOR: #08389C;
+	BACKGROUND-COLOR: transparent;
+	TEXT-DECORATION: none
+}
+
+A:visited {
+	COLOR: #08389C;
+	BACKGROUND-COLOR: transparent;
+	TEXT-DECORATION: none
+}
+
+A:hover {
+	COLOR: #08389C;
+	BACKGROUND-COLOR: #f4a460;
+	TEXT-DECORATION: none
+}
+
+A:active {
+	COLOR: #08389C;
+	BACKGROUND-COLOR: #f4a460;
+	TEXT-DECORATION: none
+}
+
+.body_main_input {
+	BORDER-RIGHT: #666666 1px solid;
+	BORDER-TOP: #666666 1px solid;
+	FONT-SIZE: 12px;
+	BORDER-LEFT: #666666 1px solid;
+	BORDER-BOTTOM: #666666 1px solid;
+	FONT-FAMILY: Courier New, Courier, mono
+}
+
+.desc {
+	color: #999999;
+	font-size: 12px;
+	BORDER-LEFT: #ffffff 10px solid;
+}
+
+.desc_foot {
+	color: #ffffff;
+	font-size: 12px;
+	BORDER-LEFT: #93bde6 10px solid;
+}
+
+.msg_success {
+	color: #00FFFF;
+	font-weight: bold;
+}
+
+.msg_failed {
+	color: #FFFF00;
+	font-weight: bold;
+}
+
+.td-list-1 {
+	background-color: #F3FBFF;
+	height: 10;
+	text-align: center;
+	cursor: hand;
+	font-size: 12px;
+}
+
+.td-list-2 {
+	background-color:#CAEAF4;
+	cursor: hand;
+}
+
+.td-list-title {
+	background-color: #E1F3F7;
+	height: 23;
+	text-align: center;
+	font-weight: bold;
+	font-size: 12px;
+}
+
+.b5 {
+	margin-top: 5px
+}
+
+.table-bg {
+	BORDER-COLLAPSE: collapse;
+}
+
+.error {
+	font-size: 12px;
+	color: #ff0000;
+}

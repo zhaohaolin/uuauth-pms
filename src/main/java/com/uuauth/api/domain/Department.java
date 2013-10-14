@@ -2,17 +2,12 @@ package com.uuauth.api.domain;
 
 /**
  */
-public class Department implements java.io.Serializable {
+public class Department {
 	// Fields
 	
-	/**  */
-	private static final long	serialVersionUID	= 8169158846996522424L;
-	/**
-        *
-        */
-	private Integer				id;
-	private Integer				parentId			= 0;
-	private String				name;
+	private Integer	id;
+	private Integer	parentId	= 0;
+	private String	name;
 	
 	// Constructors
 	/** default constructor */

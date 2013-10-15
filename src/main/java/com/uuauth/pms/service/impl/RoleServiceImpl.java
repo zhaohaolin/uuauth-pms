@@ -9,14 +9,25 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.uuauth.pms.dao.RoleDAO;
+import com.uuauth.pms.dao.impl.RoleDAOImpl;
 import com.uuauth.pms.model.Role;
 import com.uuauth.pms.service.RoleService;
 
 public class RoleServiceImpl implements RoleService {
 	
-	private RoleDAO				roleDAO;
-	private final static Logger	LOG	= LoggerFactory
-											.getLogger(RoleServiceImpl.class);
+	private final static Logger				LOG			= LoggerFactory
+																.getLogger(RoleServiceImpl.class);
+	private RoleDAO							roleDAO		= RoleDAOImpl
+																.getInstance();
+	private final static RoleServiceImpl	instance	= new RoleServiceImpl();
+	
+	private RoleServiceImpl() {
+		//
+	}
+	
+	public static final RoleServiceImpl getInstance() {
+		return instance;
+	}
 	
 	public void setRoleDAO(RoleDAO roleDAO) {
 		this.roleDAO = roleDAO;

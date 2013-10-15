@@ -35,8 +35,10 @@ public class PmsServlet extends HttpServlet {
 	private static final long	serialVersionUID	= 1L;
 	private final Logger		logger				= LoggerFactory
 															.getLogger(PmsServlet.class);
-	private PowerService		powerService		= new PowerServiceImpl();
-	private RoleService			roleService			= new RoleServiceImpl();
+	private PowerService		powerService		= PowerServiceImpl
+															.getInstance();
+	private RoleService			roleService			= RoleServiceImpl
+															.getInstance();
 	
 	@Override
 	public void init() throws ServletException {

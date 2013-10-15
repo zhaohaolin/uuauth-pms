@@ -46,7 +46,8 @@ public class AutoLoginServlet extends HttpServlet implements AuthConstants,
 															.getLogger(AutoLoginServlet.class);
 	private UUAuthAPIService	apiService			= UUAuthAPIService
 															.getInstance();
-	private PowerService		powerService = new PowerServiceImpl();
+	private PowerService		powerService		= PowerServiceImpl
+															.getInstance();
 	private String				indexPage			= "/index.html";
 	
 	public void init(ServletConfig config) throws ServletException {

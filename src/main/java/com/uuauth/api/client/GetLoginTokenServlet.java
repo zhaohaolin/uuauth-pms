@@ -10,7 +10,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.lang.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
+import com.uuauth.api.exception.ClientInitParamConfigException;
 import com.uuauth.api.service.UUAuthAPIService;
 
 /**
@@ -28,30 +31,47 @@ public class GetLoginTokenServlet extends HttpServlet {
 															.getInstance();
 	private static final String	APPTOKEN			= "app.token";
 	private static final String	APPPASSWORD			= "app.password";
-	private static final String	APIURL				= "app.api.url";
+	private static final String	APIURL				= "app.url";
 	private static final String	APPSUFFIX			= "app.suffix";
+	private static final Logger	LOG					= LoggerFactory
+															.getLogger(GetLoginTokenServlet.class);
 	
 	public void init(ServletConfig config) throws ServletException {
-		String token = config.getInitParameter(APPTOKEN);
-		if (StringUtils.isNotEmpty(token)) {
+		try {
+			String token = config.getInitParameter(APPTOKEN);
+			if (StringUtils.isEmpty(token)) {
+				throw new ClientInitParamConfigException(
+						"register init app.token fauiler.");
+			}
 			apiService.setToken(token);
-		}
-		
-		String password = config.getInitParameter(APPPASSWORD);
-		if (StringUtils.isNotEmpty(password)) {
+			
+			String password = config.getInitParameter(APPPASSWORD);
+			if (StringUtils.isEmpty(password)) {
+				throw new ClientInitParamConfigException(
+						"register init app.password fauiler.");
+			}
 			apiService.setPassword(password);
-		}
-		
-		String apiUrl = config.getInitParameter(APIURL);
-		if (StringUtils.isNotEmpty(apiUrl)) {
+			
+			String apiUrl = config.getInitParameter(APIURL);
+			if (StringUtils.isEmpty(apiUrl)) {
+				throw new ClientInitParamConfigException(
+						"register init app.url fauiler.");
+			}
 			apiService.setApiUrl(apiUrl);
+			
+			String suffix = config.getInitParameter(APPSUFFIX);
+			if (StringUtils.isEmpty(suffix)) {
+				throw new ClientInitParamConfigException(
+						"register init app.suffix fauiler.");
+			}
+			apiService.setSuffix(suffix);
+			
+			apiService.init();
+		} catch (ClientInitParamConfigException e) {
+			// e.printStackTrace();
+			LOG.error("[{}]", e.getMessage());
 		}
 		
-		String suffix = config.getInitParameter(APPSUFFIX);
-		if (StringUtils.isNotEmpty(suffix)) {
-			apiService.setSuffix(suffix);
-		}
-		apiService.init();
 		super.init(config);
 	}
 	

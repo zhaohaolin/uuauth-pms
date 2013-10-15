@@ -2,15 +2,8 @@ package com.uuauth.pms.model;
 
 import java.util.List;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
-
-@Entity
-@Table(name = "t_pms_role")
 public class Role {
 	
-	@Id
 	private int				id;
 	private String			name;
 	private String			description;

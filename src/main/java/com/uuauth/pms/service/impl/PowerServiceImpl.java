@@ -16,11 +16,23 @@ import com.uuauth.pms.service.PowerService;
 
 public class PowerServiceImpl implements PowerService {
 	
-	private PowerDAO			powerDAO	= new PowerDAOImpl();
-	private RoleDAO				roleDAO		= new RoleDAOImpl();
-	private String				domain		= ".globe.com";
-	private final static Logger	log			= LoggerFactory
-													.getLogger(PowerServiceImpl.class);
+	private final static Logger				LOG			= LoggerFactory
+																.getLogger(PowerServiceImpl.class);
+	private PowerDAO						powerDAO	= PowerDAOImpl
+																.getInstance();
+	private RoleDAO							roleDAO		= RoleDAOImpl
+																.getInstance();
+	private String							domain		= ".globe.com";
+	
+	private final static PowerServiceImpl	instance	= new PowerServiceImpl();
+	
+	private PowerServiceImpl() {
+		//
+	}
+	
+	public static final PowerServiceImpl getInstance() {
+		return instance;
+	}
 	
 	public void setPowerDAO(PowerDAO powerDAO) {
 		this.powerDAO = powerDAO;
@@ -37,12 +49,12 @@ public class PowerServiceImpl implements PowerService {
 	public boolean checkPowerIdIsExist(String id) {
 		Power power = powerDAO.getPowerById(id);
 		if (null != power) {
-			log.debug("power=[{}] is exist by id=[{}]", new Object[] { power,
+			LOG.debug("power=[{}] is exist by id=[{}]", new Object[] { power,
 					id });
 			return true;
 		}
 		
-		log.debug("power is not exist by id=[{}]", new Object[] { id });
+		LOG.debug("power is not exist by id=[{}]", new Object[] { id });
 		return false;
 	}
 	
@@ -69,7 +81,7 @@ public class PowerServiceImpl implements PowerService {
 	
 	public boolean addPower(Power power) {
 		powerDAO.addPower(power);
-		log.debug("add power=[{}] is ok.", power);
+		LOG.debug("add power=[{}] is ok.", power);
 		return true;
 	}
 	
@@ -84,6 +96,7 @@ public class PowerServiceImpl implements PowerService {
 	}
 	
 	public boolean editPower(Power power, String oldId) {
+		power.setOldId(oldId);
 		// 只修改普通属性
 		if (oldId.equals(power.getId())) {
 			powerDAO.updatePower(power);
@@ -132,14 +145,14 @@ public class PowerServiceImpl implements PowerService {
 		String pmsIdList = "";
 		List<Role> roleList = roleDAO.getSysRoleList(roles);
 		if (null == roleList || roleList.isEmpty()) {
-			log.warn("role list is null or empty by roles=[{}]", roles);
+			LOG.warn("role list is null or empty by roles=[{}]", roles);
 			return list;
 		}
 		
 		for (Role role : roleList) {
 			pmsIdList += role.getPowers();
 		}
-		log.info("pms id list=[{}]", pmsIdList);
+		LOG.info("pms id list=[{}]", pmsIdList);
 		
 		list = powerDAO.getSysPowerList(pmsIdList);
 		return list;

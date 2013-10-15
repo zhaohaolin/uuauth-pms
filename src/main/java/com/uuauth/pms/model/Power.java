@@ -6,15 +6,8 @@ package com.uuauth.pms.model;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
-
-@Entity
-@Table(name = "t_pms_powers")
 public class Power {
 	
-	@Id
 	private String		id;
 	private String		name		= "";
 	private String		power		= "";

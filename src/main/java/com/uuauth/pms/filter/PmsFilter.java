@@ -35,7 +35,7 @@ public class PmsFilter implements Filter, AuthConstants {
 	private Set<String>			included;											// 包括的访问规则
 	private String				urlRedirect;										// 访问不通过的跳转uri
 	private UUAuthAPIService	apiService	= UUAuthAPIService.getInstance();
-	private Logger				log			= LoggerFactory
+	private final static Logger	LOG			= LoggerFactory
 													.getLogger(PmsFilter.class);
 	
 	// 匹配规则检查
@@ -97,7 +97,7 @@ public class PmsFilter implements Filter, AuthConstants {
 		String queryStr = req.getQueryString();
 		prefix = prefix == null ? "" : prefix;
 		
-		log.debug("request url=[{}]", req.getRequestURL().toString()
+		LOG.debug("request url=[{}]", req.getRequestURL().toString()
 				+ (StringUtils.isEmpty(queryStr) ? "" : "?" + queryStr));
 		
 		// 是否排除规则
@@ -148,7 +148,7 @@ public class PmsFilter implements Filter, AuthConstants {
 			return;
 		}
 		
-		log.debug("refuse:" + uri);
+		LOG.debug("refuse:" + uri);
 		
 		String basePath = urlRedirect;
 		if (basePath.startsWith("/")) {
